@@ -42,8 +42,13 @@ export class DetailsComponent implements OnInit {
     this.cS.getCatByIdFromDatabase({ id: id, task: 'get' })
       .subscribe(catById => { 
         this.cat = catById;
-        //Mivel a cicát tömbként kapom vissza a backendtől
-        console.log('A kapott cica: ' + this.cat[0].name);
+        console.log('A kapott cica: ' + this.cat.name);
+        this.catForm.patchValue({
+          id: this.catId,
+          name: this.cat.name,
+          food: this.cat.food,
+          img: this.cat.img
+        })
       })
   }
 
@@ -52,7 +57,7 @@ export class DetailsComponent implements OnInit {
   }
 
   updateCatToServer() {
-    this.cS.updateCatByIdToDatabase(this.catForm.value).subscribe();
+    this.cS.updateCatByIdToDatabase(this.catForm.value).subscribe( data => console.log(data) );
     this.location.back();
   }
 }

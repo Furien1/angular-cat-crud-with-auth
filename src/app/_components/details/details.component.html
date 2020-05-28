@@ -1,6 +1,6 @@
 
 <mat-card *ngIf='cat' class="example-card" class="mx-auto" style="width: 60%">
-    <mat-card-content *ngFor='let cat of cat'>
+    <mat-card-content>
         <h2 class="text-center mt-3">{{cat.name}} módosítása</h2>
 
         <form [formGroup]='catForm' (ngSubmit)='updateCatToServer()' class="p-3">
@@ -17,7 +17,7 @@
                 <mat-label>Kép a cicáról</mat-label>
                 <input formControlName='img' matInput placeholder="http://..." />
             </mat-form-field>
-            <button mat-button class="own-mat-button" type="submit">Send</button>
+            <button mat-button class="own-mat-button" type="submit">Módosítás</button>
         </form>
       </mat-card-content>
 </mat-card>
