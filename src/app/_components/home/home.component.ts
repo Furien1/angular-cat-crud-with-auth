@@ -44,13 +44,20 @@ export class HomeComponent implements OnInit {
       // console.log("A visszakapott adat: " + data);
       this.users = data;
     })
+
+    this.getCats();
   }
 
 
   // Macskás form hozzáadás
   addCatToService() {
     console.log(this.catForm.value);
+    this.catService.addCatToDatabase(this.catForm.value).subscribe(data => console.log(data));
     // this.catService.addCatToDatabase(this.catForm.value).subscribe();
+  }
+
+  getCats() {
+    this.catService.getCatsFromDatabase().subscribe(data => {console.log(data)});
   }
 
 }

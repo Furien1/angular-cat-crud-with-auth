@@ -14,13 +14,13 @@ const httpOptions = {
 
 export class CatService {
   // Saját szerver (HelixLab-es pontosabban), saját backenddel
-  private apiUrl: 'http://devpool.hu/Egyetem/index.php'
+  private apiUrl = 'http://devpool.hu/Egyetem/index.php'
 
   constructor(private http: HttpClient) { }
 
   // getAllCat
   getCatsFromDatabase(): Observable<Cat[]> {
-    return this.http.get<Cat[]>(this.apiUrl, httpOptions);
+    return this.http.post<Cat[]>(this.apiUrl, {task: 'get', id: ''},httpOptions);
   }
   // getCatById
   getCatByIdFromDatabase(id: number): Observable<Cat> {
