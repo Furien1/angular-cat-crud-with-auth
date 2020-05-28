@@ -6,7 +6,6 @@ import { User } from 'src/app/_models/user';
 import { Cat } from 'src/app/_models/cat';
 import { FormBuilder, Validators } from '@angular/forms';
 import { CatService } from 'src/app/_services/cat.service';
-// import { first } from 'rxjs/operators'
 
 
 @Component({
@@ -15,8 +14,10 @@ import { CatService } from 'src/app/_services/cat.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  displayedColumns: string[] = ['position', 'name', 'img', 'food'];
+  catSource: Cat[] = [];
   users: User[];
-  cats: Cat[];
+  // cats: Cat[];
 
   catForm = this.fb.group({
     name: ['', Validators.required],
@@ -39,12 +40,11 @@ export class HomeComponent implements OnInit {
    }
 
   ngOnInit() {
-    this.userService.getAll().subscribe( data => {
-      // users tömb tartalmazza a visszakapott értékeket
-      // console.log("A visszakapott adat: " + data);
-      this.users = data;
-    })
-
+    this.userService.getAll()
+      .subscribe( 
+        data => {
+          this.users = data;
+        })
     this.getCats();
   }
 
@@ -52,12 +52,15 @@ export class HomeComponent implements OnInit {
   // Macskás form hozzáadás
   addCatToService() {
     console.log(this.catForm.value);
-    this.catService.addCatToDatabase(this.catForm.value).subscribe(data => console.log(data));
-    // this.catService.addCatToDatabase(this.catForm.value).subscribe();
-  }
+    this.catService.addCatToDatabase(this.catForm.value)
+      .subscribe( 
+        () => this.getCats()
+    )};
 
   getCats() {
-    this.catService.getCatsFromDatabase().subscribe(data => {console.log(data)});
-  }
+    this.catService.getCatsFromDatabase()
+      .subscribe(
+        data => this.catSource = data
+    )};
 
 }
