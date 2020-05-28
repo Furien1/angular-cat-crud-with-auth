@@ -14,7 +14,7 @@ import { CatService } from 'src/app/_services/cat.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  displayedColumns: string[] = ['position', 'name', 'img', 'food', 'delete'];
+  displayedColumns: string[] = ['name', 'img', 'food', 'details', 'delete'];
   catSource: Cat[] = [];
   users: User[];
   // cats: Cat[];

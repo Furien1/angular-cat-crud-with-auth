@@ -1,12 +1,7 @@
-<div class="container" >
-    <div *ngIf="users" class="card mx-auto" style="width: 60%">
-        <h3 class="card-header" >Sikeresen beléptél!</h3>
-        <!-- <div class="card-body">
-            <ul>
-                <li *ngFor='let user of users'> {{user.firstName}} - {{user.lastName}} </li>
-            </ul>
-        </div>
-        <hr> -->
+
+
+<mat-card class="example-card" class="mx-auto" style="width: 60%">
+    <mat-card-content>
         <h2 class="text-center mt-3">Példa cica hozzáadás</h2>
 
         <form [formGroup]='catForm' (ngSubmit)='addCatToService()' class="p-3">
@@ -33,18 +28,12 @@
             </mat-form-field>
             <button mat-button class="own-mat-button" type="submit">Send</button>
         </form>
-    </div>
-</div>
+      </mat-card-content>
+</mat-card>
 
 
 <table style="width: 50%; margin: 0 auto" mat-table [dataSource]="catSource" class="mat-elevation-z8 my-4">
-  
-    <!-- Position Column -->
-    <ng-container matColumnDef="position">
-      <th mat-header-cell *matHeaderCellDef> No. </th>
-      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
-    </ng-container>
-  
+    
     <!-- Name Column -->
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef> Name </th>
@@ -72,7 +61,17 @@
             </div>
         </td>
     </ng-container>
-    
+
+    <ng-container matColumnDef="details">
+        <th mat-header-cell *matHeaderCellDef> Details </th>
+        <td mat-cell *matCellDef="let element"> 
+            <div class="example-button-container">
+                <button mat-icon-button color="primary" aria-label="Details">
+                    <mat-icon>menu</mat-icon>
+                </button>
+            </div>
+        </td>
+    </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>

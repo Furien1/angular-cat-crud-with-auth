@@ -5,10 +5,11 @@ import {MatTableModule} from '@angular/material/table';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon';
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
-    imports: [MatToolbarModule, MatTableModule, MatButtonModule, MatInputModule, MatIconModule],
-    exports: [MatToolbarModule, MatTableModule, MatButtonModule, MatInputModule, MatIconModule]
+    imports: [MatToolbarModule, MatTableModule, MatButtonModule, MatInputModule, MatIconModule, MatCardModule],
+    exports: [MatToolbarModule, MatTableModule, MatButtonModule, MatInputModule, MatIconModule, MatCardModule]
 })
 
 export class MaterialModule {}
