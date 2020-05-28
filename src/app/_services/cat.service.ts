@@ -33,7 +33,7 @@ export class CatService {
   }
   // Delete Cat
   deleteCatByIdFromDatabase(id: number): Observable<Cat> {
-    return this.http.delete<Cat>(`${this.apiUrl}/${id}`, httpOptions);
+    return this.http.post<Cat>(`${this.apiUrl}`, {id, task: 'delete'},httpOptions);
   }
   // Update Cat
   updateCatByIdToDatabase(Cat): Observable<Cat> {
