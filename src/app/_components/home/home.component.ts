@@ -33,21 +33,15 @@ export class HomeComponent implements OnInit {
     private authenticationService: AuthenticationService,
     private catService: CatService
   ) {
-    // Ha nincs belepett felhasznalo, atiranyitas
+    // Guard intézi de azért meghagyom emlékbe :)
     if(!this.authenticationService.userValue){
       this.router.navigate(['/login']);
     }
    }
 
   ngOnInit() {
-    this.userService.getAll()
-      .subscribe( 
-        data => {
-          this.users = data;
-        })
     this.getCats();
   }
-
 
   // Macskás form hozzáadás
   addCatToService() {
@@ -64,7 +58,6 @@ export class HomeComponent implements OnInit {
     )};
 
     deleteCat(catId: number) {
-      console.log('Törlendő cica ID: ' + catId);
       this.catService.deleteCatByIdFromDatabase(catId).subscribe(
         () => this.getCats()
       )
