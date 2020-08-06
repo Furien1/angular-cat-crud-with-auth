@@ -1,5 +1,5 @@
-# AUTHpelda
-# Macska Válogató vagymi :)
+# You may add, modify and delete cats
+# Basic CRUD app in Angular with Authentication
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.3.
 
